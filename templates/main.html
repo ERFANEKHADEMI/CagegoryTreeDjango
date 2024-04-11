@@ -1,0 +1,11 @@
+<div>
+    {% load tags %}
+
+    <h2>CATEGORIES:</h2>
+    <p>{{ params  }}</p>
+
+    <h2>DATA:</h2>
+    {% autoescape off %}
+        {% draw_menu params %}
+    {% endautoescape %}
+</div>
