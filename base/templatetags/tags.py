@@ -6,7 +6,7 @@ register = template.Library()
 
 @register.simple_tag
 def draw_menu(menu_name):
-    menu_elements = menu_name.split('::')[-1]
+    print(menu_name)
     categories = TreeCategory.objects.prefetch_related("children").filter(parent=None)
 
     html = "<ul>"
@@ -20,7 +20,7 @@ def renderList(categories, menu_name):
     html = ""
     for cat in categories:
         html += f"<li><a href='{createURL(cat)}'>" + cat.name + "</a>"
-        if cat.name in menu_name:
+        if cat.name in menu_name or cat.named_url and cat.named_url in menu_name:
             html += "<span>- развернуто</span>"
             html += "</li>"
             if cat.children.count() > 0:
@@ -42,7 +42,8 @@ def createURL(category):
     return url
 
 def parentProcessing(category, list):
-    list.append(category.name)
+    category_url = category.named_url if category.named_url else category.name
+    list.append(category_url)
     if category.parent:
         parentProcessing(category.parent, list)
 
