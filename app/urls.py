@@ -4,5 +4,7 @@ from base import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('<str:categories>/', views.menu, name='menu'),
+
+    path('<path:categories>/', views.menu, name='menu'),
+    path('', views.menu, name='menu'),
 ]

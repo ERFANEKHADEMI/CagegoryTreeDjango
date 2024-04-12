@@ -2,7 +2,7 @@ from django.db import models
 
 
 class TreeCategory(models.Model):
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='children')
     name = models.CharField(max_length=255)
     named_url = models.CharField(max_length=255, null=True, blank=True)
 

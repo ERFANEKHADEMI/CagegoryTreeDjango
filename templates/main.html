@@ -1,11 +1,29 @@
 <div>
     {% load tags %}
 
-    <h2>CATEGORIES:</h2>
-    <p>{{ params  }}</p>
 
-    <h2>DATA:</h2>
     {% autoescape off %}
         {% draw_menu params %}
     {% endautoescape %}
+
+     <style>
+        body {
+            background-color: #202020;
+            color: #fff;
+            font-size: 18px;
+            font-family: sans-serif;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: gold
+        }
+         span {
+            margin-left: 10px;
+            opacity: .5
+         }
+    </style>
 </div>
